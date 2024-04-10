@@ -1,6 +1,6 @@
 # August
 keys.py
-.DS_Store
+*.DS_Store
 data/
 
 # Byte-compiled / optimized / DLL files
