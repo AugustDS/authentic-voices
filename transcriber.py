@@ -130,7 +130,3 @@ class YouTubeTranscriber:
             raise e
         os.remove(tmp)
         return transcription.text
-
-
-YouTubeTranscriber.transcribe(
-    ["https://www.youtube.com/watch?v=7DfXKkvjW-E&ab_channel=MarquesBrownlee"])
