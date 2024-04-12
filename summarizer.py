@@ -34,7 +34,7 @@ class ReviewExtractor:
             messages.append({"role": "user",
                             "content": example_prompt})
             messages.append({"role": "assistant",
-                            "content": example_resp})
+                            "content": example_resp.model_dump_json()})
 
         print("Create new message.")
         prompt = cls.create_prompt(youtube_transcript)
