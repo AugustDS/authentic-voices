@@ -47,7 +47,7 @@ class ReviewExtractor:
         print("Run LLM.")
         try:
             resp = client.chat.completions.create(
-                model="gpt-4",
+                model=config.GPT_MODEL,
                 messages=messages,
                 response_model=Review,
             )

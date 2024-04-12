@@ -11,6 +11,7 @@ class Config(BaseSettings):
     DELETE_FILES: bool = os.environ.get("DELETE_FILES", False)
     SILENCE_LENGTH: int = os.environ.get("SILENCE_LENGTH", 800)
     WHISPER_MODEL: str = os.environ.get("WHISPER_MODEL", 'whisper-1')
+    GPT_MODEL: str = os.environ.get("GPT_MODEL", 'gpt-4-0613')
     PROMPT: str = os.environ.get("PROMPT", ("YouTube video title: {title}. "
                                             "Author: {author}. "
                                             "Trancrsiption: {transcription}. "))
