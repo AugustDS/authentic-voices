@@ -35,7 +35,6 @@ class YouTubeTranscriber:
         video_id = str(pytube.extract.video_id(url))
         mp3 = os.path.join(config.DATA_DIR, f"{video_id}.mp3")
         mp4 = os.path.join(config.DATA_DIR, f"{video_id}.mp4")
-
         youtube_transcript = YoutubeTranscript(title=youtube_video.title.strip(),
                                                author=str(
                                                    youtube_video.author),
@@ -45,6 +44,7 @@ class YouTubeTranscriber:
                                                    youtube_video.publish_date),
                                                file_path=mp3)
         if not os.path.exists(mp3):
+            print(f"Download {youtube_transcript.title}.")
             try:
                 streams = youtube_video.streams.filter(only_audio=False)
                 _ = streams.first().download(filename=mp4)
@@ -58,6 +58,7 @@ class YouTubeTranscriber:
 
     @classmethod
     def transcribe_mp3(cls, youtube_transcript: YoutubeTranscript) -> YoutubeTranscript:
+        print(f"Transcribe {youtube_transcript.title}.")
         audio = AudioSegment.from_mp3(youtube_transcript.file_path)
         dBFS = audio.dBFS
         silence_segments = silence.detect_silence(
@@ -89,7 +90,8 @@ class YouTubeTranscriber:
             if stop-start >= config.MIN_SEGMENT_LENGTH:
                 segments.append([start, stop])
                 start = silence_segments[i][1]
-        segments.append([start, audio_length])
+        if audio_length - start >= 1000:
+            segments.append([start, audio_length])
         return segments
 
     @staticmethod
@@ -111,7 +113,7 @@ class YouTubeTranscriber:
         tmp = "./temp.mp3"
         audio_segment.export(tmp)
         audio_file = open(tmp, "rb")
-        print(f"Transcribe audio segment.")
+        print(f"LLM call.")
         try:
             transcription = client.audio.transcriptions.create(
                 model=config.WHISPER_MODEL,
@@ -119,6 +121,6 @@ class YouTubeTranscriber:
             )
         except Exception as e:
             print(f"OpenAI transcription failed: {e}.")
-            raise e
+            return "FAILED"
         os.remove(tmp)
         return transcription.text

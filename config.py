@@ -15,6 +15,10 @@ class Config(BaseSettings):
     PROMPT: str = os.environ.get("PROMPT", ("YouTube video title: {title}. "
                                             "Author: {author}. "
                                             "Trancrsiption: {transcription}. "))
+    PROMPT_MATCH: str = os.environ.get("PROMPT", ("Decide whether the following two review aspects can be aggregated. "
+                                                  "This means they target the same or a very similar product aspect. "
+                                                  "Additionally return the best fitting name for the aggregated aspect, "
+                                                  "if the aspects are not identical. First aspect: {aspect_1}. Second aspect: {aspect_2}."))
     USE_EXAMPLE: bool = os.environ.get("USE_EXAMPLE", True)
     EXAMPLE_TRANSCRIPT: str = os.environ.get(
         "EXAMPLE_TRANSCRIPT", "./data/example_transcript.json")

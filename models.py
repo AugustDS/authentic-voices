@@ -55,3 +55,35 @@ class Review(CustomBaseModel):
         description="Name of the product being reviewed.")
     reviews: List[ReviewAspect] = Field(
         default_factory=list, description="List of review aspects extracted from the text.")
+
+
+class AggregatedReviewPoint(CustomBaseModel):
+    title: str = Field(description="Title for the review point.")
+    point: str = Field(description="The review point.")
+    quotation: str = Field(
+        description="Exact quotation from the text to support the review point.")
+    sentiment: Sentiment = Field(
+        description="Whether the review point is positive, negative or neutral.")
+    author: Optional[str]
+    videoId: Optional[str]
+
+
+class AggregatedReviewAspect(CustomBaseModel):
+    aspect: str = Field(
+        description="Aspect of the product that the review points address.")
+    reviewPoints: List[AggregatedReviewPoint] = Field(
+        default_factory=list, description="List of review points extracted from the text that address the aspect.")
+
+
+class AggregatedReview(CustomBaseModel):
+    product: str = Field(
+        description="Name of the product being reviewed.")
+    reviews: List[AggregatedReviewAspect] = Field(
+        default_factory=list, description="List of review aspects extracted from the text.")
+
+
+class MatchedAspects(BaseModel):
+    match: bool = Field(
+        description="If two review aspects match and can be combined to the same aspect.")
+    name: str = Field(
+        description="Name of the combined/aggregated review aspects.", default=None)
