@@ -64,8 +64,9 @@ class AggregatedReviewPoint(CustomBaseModel):
         description="Exact quotation from the text to support the review point.")
     sentiment: Sentiment = Field(
         description="Whether the review point is positive, negative or neutral.")
-    author: Optional[str]
-    videoId: Optional[str]
+    vidAuthor: Optional[str]
+    vidId: Optional[str]
+    vidTitle: Optional[str]
 
 
 class AggregatedReviewAspect(CustomBaseModel):
@@ -86,4 +87,4 @@ class MatchedAspects(BaseModel):
     match: bool = Field(
         description="If two review aspects match and can be combined to the same aspect.")
     name: str = Field(
-        description="Name of the combined/aggregated review aspects.", default=None)
+        description="Name of the combined/aggregated review aspects.")

@@ -1,6 +1,6 @@
 from transcriber import YouTubeTranscriber
 from summarizer import ReviewExtractor
-
+from aggregator import ReviewAggregator
 
 '''
 test_urls = ["https://www.youtube.com/watch?v=VdOlqcg9uMQ&ab_channel=MarquesBrownlee"]
@@ -16,4 +16,7 @@ urls = ["https://www.youtube.com/watch?v=cBpGq-vDr2Y&t=12s&ab_channel=MarquesBro
         "https://www.youtube.com/watch?v=oqjWnA7J0f0&pp=ygUUSXBob25lIDE1IHBybyByZXZpZXc%3D",
         "https://www.youtube.com/watch?v=7Ql6TLeLRP8&pp=ygUUSXBob25lIDE1IHBybyByZXZpZXc%3D"]
 YouTubeTranscriber.transcribe(urls)
+
+ReviewExtractor.run_all("iphone_15_pro")
+ReviewAggregator.run("iphone_15_pro")
 '''

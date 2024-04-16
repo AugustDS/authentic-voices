@@ -24,3 +24,12 @@ def dump_json(name: str, dir: str, json_str: str) -> None:
     with open(file_path, 'w') as file:
         file.write(json_str)
     print(f"Successfully dumped {file_name}.")
+
+
+def matching_files(dir: str, name: str):
+    res = []
+    for root, _, files in os.walk(dir):
+        for file in files:
+            if name in file:
+                res.append(os.path.join(root, file))
+    return res
