@@ -11,7 +11,7 @@
 
 `summarizer.py`
 - Extract reviews from transcriptions via LLM (GPT-4) 
-- Via structured output schames see `models.py`
+- Via structured output schemas see `models.py`
 
 `aggregator.py`
 - Group different reviews according to aspects via LLMs (GPT-4)
