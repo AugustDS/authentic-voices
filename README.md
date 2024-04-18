@@ -1,6 +1,6 @@
-Solve authenticity crisis online: Start by surfacing authentic product reviews.
-
-No affiliation, no SEO crap, no ads.
+## Solve authenticity crisis online
+- Start by surfacing authentic product reviews.
+- No affiliation, no SEO crap, no ads.
 
 ### TL;DR
 
