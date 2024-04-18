@@ -1,10 +1,8 @@
-# authentic-voices
-
 Solve authenticity crisis online: Start by surfacing authentic product reviews.
 
 No affiliation, no SEO crap, no ads.
 
-## TL;DR
+### TL;DR
 
 `transcriber.py`
 - Downloads youtube videos via url
@@ -19,18 +17,18 @@ No affiliation, no SEO crap, no ads.
 - Group different reviews according to aspects via LLMs (GPT-4)
 
 
-## In progress
+### In progress
 
 - Store json data (MongoDB)
 - Surface authentic reviews (next.js & vercel)
 - UI will support slicing across all useful dimensions
 - Show actual quotes and link to correct timestamps
 
-## Next steps
+### Next steps
 - Run pipeline on 20-30 most authentic product review YouTube channels
 - Surface all products with sufficient authentic review points
 
 
-## Vision
+### Vision
 - Include authentic user reviews from reddit
 - Become #1 trusted source of authentic reviews online
